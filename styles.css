@@ -1,0 +1,49 @@
+/* Professional Overrides */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #2c3e50;
+}
+
+header {
+    background-color: #2c3e50 !important;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item {
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.btn-primary {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+.btn-primary:hover {
+    background-color: #34495e;
+    border-color: #34495e;
+}
+
+.btn-outline-primary {
+    color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+/* Responsive adjustments for carousel */
+@media (max-width: 768px) {
+    .carousel-item .col-3 {
+        flex: 0 0 50%; /* Show 2 logos per row on mobile */
+        max-width: 50%;
+    }
+}

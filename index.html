@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayur Dutt Sharma | Web Developer Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ---------------------- GLOBAL STYLES ---------------------- */
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ---------------------- NAVBAR ---------------------- */
+        .navbar {
+            background: linear-gradient(90deg, #0d1117, #1f2833);
+            padding: 0.75rem 0;
+        }
+
+        .navbar-brand {
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            color: #ffc107 !important;
+            font-weight: 700;
+        }
+
+        .navbar-nav .nav-link {
+            color: #e0e0e0 !important;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        /* ---------------------- HEADER ---------------------- */
+        header {
+            background: linear-gradient(135deg, #1a1d29, #2c3246);
+            color: #fff;
+            padding: 3rem 0 4rem;
+            position: relative;
+            text-align: center;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #e2e2e2;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-btn {
+            margin: 0.4rem;
+            border-color: #ffc107;
+            color: #ffc107;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-touch {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-touch:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        /* ---------------------- CONTACT FORM (Popup) ---------------------- */
+        #contactForm {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            width: 90%;
+            max-width: 550px;
+            z-index: 1001;
+            animation: fadeIn 0.3s ease;
+        }
+
+        #contactForm.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        #contactForm button {
+            background-color: #1a1d29;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        #contactForm button:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        #contactForm h4 {
+            color: #1a1d29;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Overlay background when form is open */
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .overlay.show {
+            display: block;
+            animation: fadeInBg 0.4s ease;
+        }
+
+        @keyframes fadeInBg {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ---------------------- FOOTER ---------------------- */
+        footer {
+            background: #0d1117;
+            color: #ccc;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="image/logo1.png" alt="Mayur Dutt Sharma" style="height:50px; width:auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="mt-10">
+        <div class="container text-center header-content">
+            <h1>Mayur Dutt Sharma</h1>
+            <p>Full-Stack Web Developer | Specializing in E-Commerce Solutions</p>
+            <div>
+                <a href="resume.docx" download class="btn btn-outline-light resume-btn">
+                    <i class="fa-solid fa-file-word text-primary"></i> Word
+                </a>
+                <a href="resume.pdf" download class="btn btn-outline-light resume-btn">
+                    <i class="fa-solid fa-file-pdf text-danger"></i> PDF
+                </a>
+                <button class="btn btn-touch ms-2" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    <i class="fa-solid fa-envelope me-1"></i> Get in Touch
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Send a Message</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Attach File (optional)</label>
+                            <input type="file" class="form-control" id="file" name="file" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-1"></i>
+                            Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section id="about" class="py-5 bg-light text-dark">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-family: 'Playfair Display', serif;">About Me</h2>
+            <p class="text-center fs-5">
+                I’m a passionate web developer with <strong>8+ years of experience</strong> building high-performance,
+                scalable applications for
+                <strong>government, e-commerce, and enterprise</strong> clients.
+                I specialize in <strong>PHP, Laravel, WordPress, WooCommerce, PrestaShop, OpenCart, and Vue.js</strong>
+                — focusing on delivering
+                solutions that are fast, secure, and user-friendly.
+                I also explore <strong>AI integration</strong> to create smarter, automated, and personalized web
+                experiences.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-5 bg-white text-dark">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-family: 'Playfair Display', serif;">Technologies I Use</h2>
+            <div id="techCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-3 text-center"><img src="icons/php-original.svg" alt="PHP" title="PHP"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/laravel.svg" alt="Laravel" title="Laravel"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/wordpress.svg" alt="WordPress"
+                                    title="WordPress" class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/woocommerce.svg" alt="WooCommerce"
+                                    title="WooCommerce" class="img-fluid" style="max-width: 80px;"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-3 text-center"><img src="icons/prestashop.svg" alt="PrestaShop"
+                                    title="PrestaShop" class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/magento.svg" alt="Magento" class="img-fluid"
+                                    style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/opencart.svg" alt="OpenCart" title="OpenCart"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/vuejs.svg" alt="Vue.js" title="Vue.js"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-3 text-center"><img src="icons/github.svg" alt="GitHub" title="GitHub"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/jquery.svg" alt="jQuery" title="jQuery"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                            <div class="col-3 text-center"><img src="icons/jira.svg" alt="Jira" title="Jira"
+                                    class="img-fluid" style="max-width: 80px;"></div>
+                            <!-- <div class="col-3 text-center"><img src="icons/api.svg" alt="API Integration" class="img-fluid" style="max-width: 80px;"></div> -->
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#techCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#techCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-5 bg-light text-dark">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-family: 'Playfair Display', serif;">Portfolio</h2>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-12">
+                    <div class="card h-100 shadow-sm border-0">
+                        <!-- <img src="https://via.placeholder.com/600x300/2c3e50/ffffff?text=E-Commerce+Platform"
+                            class="card-img-top" alt="Project 1"> -->
+                        <div class="card-body">
+                            <h5 class="card-title">E-Commerce Platform with WooCommerce</h5>
+                            <p class="card-text">Developed a full-featured online store with custom themes, payment
+                                gateways, and optimized checkout experience for improved conversions.</p>
+                            <a href="#" class="btn btn-primary me-2">Live Demo</a>
+                            <a href="#" class="btn btn-outline-primary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="card h-100 shadow-sm border-0">
+                        <!--  <img src="https://via.placeholder.com/600x300/2c3e50/ffffff?text=Laravel+API+System"
+                            class="card-img-top" alt="Project 2"> -->
+                        <div class="card-body">
+                            <h5 class="card-title">Laravel API for Inventory Management</h5>
+                            <p class="card-text">Engineered a RESTful API using Laravel to handle product inventory,
+                                authentication, and real-time updates for multiple sales channels.</p>
+                            <a href="#" class="btn btn-primary me-2">Live Demo</a>
+                            <a href="#" class="btn btn-outline-primary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5 bg-white text-dark">
+        <div class="container text-center">
+            <h2 class="mb-4" style="font-family: 'Playfair Display', serif;">Contact</h2>
+            <p class="fs-5 mb-2">📧 <strong>Email:</strong> <a href="mailto:your.email@example.com"
+                    class="text-decoration-none text-primary">your.email@example.com</a></p>
+            <p class="fs-5 mb-0">💼 <strong>LinkedIn:</strong> <a href="#"
+                    class="text-decoration-none text-primary">linkedin.com/in/mayurduttsharma</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2025 Mayur Dutt Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
